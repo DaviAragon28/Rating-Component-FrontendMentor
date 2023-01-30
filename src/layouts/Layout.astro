@@ -1,0 +1,27 @@
+---
+export interface Props {
+	title: string;
+}
+import "@fontsource/overpass";
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-bgColor h-screen grid place-content-center">
+		<slot />
+	</body>
+</html>
+<style is:global>
+	body {
+		font-family: "Overpass", sans-serif;
+	}
+</style>

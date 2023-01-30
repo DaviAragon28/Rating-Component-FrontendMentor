@@ -1,0 +1,99 @@
+---
+const rates = [
+	{
+		rate: 1,
+		id: "1",
+	},
+	{
+		rate: 2,
+		id: "2",
+	},
+	{
+		rate: 3,
+		id: 3,
+	},
+	{
+		rate: 4,
+		id: "4",
+	},
+	{
+		rate: 5,
+		id: "5",
+	},
+];
+
+let active = 0
+
+const getRate = (id: any) => {
+	console.log('a')
+}
+const { title, body, button } = Astro.props;
+---
+
+<section
+	class="flex flex-col gap-6 text-white mx-4 rounded-3xl shadow-lg bg-gradient-to-b from-darkBlue py-6 px-5 max-w-xs"
+>
+	<img
+		class="w-10 rounded-full p-3 bg-unkwonColor z-10"
+		src="/images/icon-star.svg"
+		alt="start"
+	/>
+
+	<h2 class="text-2xl font-[700]">
+		{title}
+	</h2>
+	<p class="text-mediumGray text-[12px]">
+		{body}
+	</p>
+	<ul class="flex justify-between">
+		{
+			rates.map(({ rate, id }) => (
+				<li
+					id={`${id}`}
+					onclick={"getRate()"}
+					class={`text-center transition-colors bg-unkwonColor text-mediumGray py-2 px-4 rounded-full hover:bg-lightGray hover:text-white cursor-pointer`}
+				>
+					{rate}
+				</li>
+			))
+		}
+	</ul>
+	<button
+		id="alert"
+		class="disabled:blur-md bg-primary tracking-widest py-2 rounded-full cursor-pointer transition-colors hover:bg-white hover:text-primary"
+	>
+		{button}
+	</button>
+</section>
+
+<script is:inline>
+	// Find all buttons with the `alert` class on the page.
+	// const buttons = document.querySelectorAll("li");
+	// let active;
+	// // Handle clicks on each button.
+	// buttons.forEach((button) => {
+	// 	button.addEventListener("click", (e) => {
+	// 		// console.log(e.target.id)
+	// 		// alert(`Button was clicked, ${e.target.id}!`);
+	// 		getRateToStyling(e.target.id, e.target);
+	// 	});
+	// });
+
+	// function getRateToStyling(id, e) {
+	// 	active = id;
+	// 	console.log(e);
+	// 	const button = document.getElementById(id);
+	// 	if (active != id) {
+	// 		button.style.background = 'white'
+	// 	} else {
+	// 		button.style.background = "#fb7413";
+	// 		button.style.color = "#fff";
+	// 	}
+	// }
+
+	function getRate () {
+		console.log('Hola');
+	}
+
+	console.log(active);
+</script>
